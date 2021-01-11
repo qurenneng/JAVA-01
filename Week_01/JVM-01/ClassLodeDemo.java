@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * 1.使用 字节流读取文件，并转换成字节数组
  * 2.处理字节数组，x=255-x
  * 3.反射加载，调用对象的hello方法
- * @date 2020/5/7 16:16
+ * @date 2021/1/10 16:16
  */
 public class ClassLodeDemo extends   ClassLoader{
 
