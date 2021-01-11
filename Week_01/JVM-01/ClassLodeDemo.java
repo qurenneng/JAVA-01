@@ -42,7 +42,7 @@ public class ClassLodeDemo extends   ClassLoader{
             for(int i=0;i<fileToByteArray.length;i++){
                 bytes[i] =(byte)(255-fileToByteArray[i]);
             }
-            return  defineClass(fileToByteArray,0,fileToByteArray.length);
+            return  defineClass(bytes,0,bytes.length);
         }
 
         /**
