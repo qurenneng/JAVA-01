@@ -1,0 +1,48 @@
+用户表：
+CREATE TABLE `user` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL COMMENT '用户名称',
+  `password` varchar(255) DEFAULT NULL COMMENT '用户密码',
+  `age` int DEFAULT NULL COMMENT '性别，1.男 2.女',
+  `address` varchar(255) DEFAULT NULL COMMENT '地址',
+  `images` varchar(255) DEFAULT NULL COMMENT '图片',
+  `addTime` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+订单表：
+CREATE TABLE `order` (
+  `orderid` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `userid` bigint unsigned NOT NULL DEFAULT '0' COMMENT '下单人id',
+  `amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '订单总价',
+  `status` tinyint unsigned NOT NULL DEFAULT '0' COMMENT '订单状态',
+  `addressid` bigint unsigned NOT NULL DEFAULT '0' COMMENT '收货地址',
+  `expressid` int unsigned NOT NULL DEFAULT '0' COMMENT '快递id',
+  `expressno` varchar(50) NOT NULL DEFAULT '' COMMENT '快递单号',
+  `tradeno` varchar(100) NOT NULL DEFAULT '' COMMENT '支付交易号',
+  `tradeext` text COMMENT '支付信息',
+  `createtime` int unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `updatetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`orderid`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+商品表：
+CREATE TABLE `commodity` (
+  `productid` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '商品id',
+  `cateid` bigint unsigned NOT NULL DEFAULT '0' COMMENT '商品分类id',
+  `title` varchar(200) NOT NULL DEFAULT '' COMMENT '商品标题',
+  `description` text COMMENT '商品描述',
+  `num` bigint unsigned NOT NULL DEFAULT '0' COMMENT '库存',
+  `price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '价格',
+  `cover` varchar(200) NOT NULL DEFAULT '' COMMENT '封面图',
+  `pics` text COMMENT '图片集合',
+  `issale` enum('0','1') NOT NULL DEFAULT '0' COMMENT '是否促销',
+  `saleprice` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '促销价格',
+  `ishot` enum('0','1') NOT NULL DEFAULT '0' COMMENT '是否热卖',
+  `ison` enum('0','1') NOT NULL DEFAULT '0' COMMENT '是否上架',
+  `istui` enum('0','1') NOT NULL DEFAULT '0' COMMENT '是否推荐',
+  `createtime` int unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
+  PRIMARY KEY (`productid`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
+
+
